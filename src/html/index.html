@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+		<meta name="description" content="asm website">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
+		<meta name="theme-color" content="<%= htmlWebpackPlugin.options.themeColor %>">
+
+		<title><%= htmlWebpackPlugin.options.title %></title>
+
+		<!-- Add to homescreen for Chrome on Android -->
+		<meta name="mobile-web-app-capable" content="yes">
+
+		<link rel="icon" sizes="192x192" href="images/thumbnail.png">
+
+		<!-- Add to homescreen for Safari on iOS -->
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<meta name="apple-mobile-web-app-title" content="<%= htmlWebpackPlugin.options.title %>">
+		<link rel="apple-touch-icon-precomposed" href="images/thumbnail.png">
+
+		<!-- Tile icon for Win8 (144x144 + tile color) -->
+		<!--<meta name="msapplication-TileImage" content="144x144">-->
+		<meta name="msapplication-TileColor" content="<%= htmlWebpackPlugin.options.themeColor %>">
+
+		<link rel="shortcut icon" href="images/favicon.png">
+
+		<!-- SEO: If your mobile URL is different from the desktop URL, add a canonical link to the desktop page https://developers.google.com/webmasters/smartphone-sites/feature-phones -->
+		<!--
+			<link rel="canonical" href="http://www.example.com/">
+			-->
+	</head>
+
+	<body>
+		<mwc-drawer hasHeader type="modal">
+			<span slot="title">Drawer Title</span>
+			<span slot="subtitle">subtitle</span>
+			<div class="drawer-content">
+				<p>Drawer content</p>
+				<mwc-icon-button icon="gesture"></mwc-icon-button>
+				<mwc-icon-button icon="gavel" id="gavel"></mwc-icon-button>
+			</div>
+
+			<div slot="appContent">
+				<mwc-top-app-bar>
+					<mwc-icon-button slot="navigationIcon" icon="menu"></mwc-icon-button>
+					<div slot="title">Title</div>
+					<mwc-icon-button slot="actionItems" icon="cast"></mwc-icon-button>
+					<mwc-icon-button slot="actionItems" icon="fingerprint"></mwc-icon-button>
+				</mwc-top-app-bar>
+				<div class="main-content">
+
+					<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
+						dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex
+						ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat
+						nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit
+						anim id est laborum.</p>
+
+					<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
+						dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex
+						ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat
+						nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit
+						anim id est laborum.</p>
+
+					<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
+						dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex
+						ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat
+						nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit
+						anim id est laborum.</p>
+
+					<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
+						dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex
+						ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat
+						nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit
+						anim id est laborum.</p>
+
+				</div>
+			</div>
+		</mwc-drawer>
+	</body>
+
+</html>

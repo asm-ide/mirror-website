@@ -1,0 +1,38 @@
+{
+  "name": "asm-website",
+  "version": "1.0.0",
+  "description": "ASM offical website.",
+  "main": "index.html",
+  "repository": "https://gitlab.com/asm-ide/asm-ide.gitlab.io",
+  "author": "lhwdev <lhwdev6@outlook.com>",
+  "license": "MIT",
+  "private": true,
+  "scripts": {
+    "prodBuild": "webpack -p",
+    "devBuild": "webpack -d",
+    "start": "webpack-dev-server"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.4.5",
+    "@babel/preset-env": "^7.4.5",
+    "babel-loader": "^8.0.6",
+    "css-loader": "^3.0.0",
+    "html-webpack-plugin": "^3.2.0",
+    "node-sass": "^4.12.0",
+    "sass-loader": "^7.1.0",
+    "style-loader": "^0.23.1",
+    "webpack": "^4.35.2",
+    "webpack-cli": "^3.3.5",
+    "webpack-dev-server": "^3.7.2"
+  },
+  "dependencies": {
+    "@babel/polyfill": "^7.4.4",
+    "@material/base": "^3.0.0",
+    "@material/mwc-button": "^0.6.0",
+    "@material/mwc-drawer": "^0.6.0",
+    "@material/mwc-icon": "^0.6.0",
+    "@material/mwc-icon-button": "^0.6.0",
+    "@material/mwc-top-app-bar": "^0.6.0",
+    "@webcomponents/webcomponentsjs": "^2.2.10"
+  }
+}
