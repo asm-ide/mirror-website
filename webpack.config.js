@@ -113,7 +113,7 @@ module.exports = (env, argv) => {
       new HtmlWebpackPlugin(Object.assign({ template: './src/html/index.html' }, variables))
     ],
     output: {
-      path: path.resolve(__dirname, 'dist'),
+      path: path.resolve(__dirname, 'public'),
       filename: '[name].bundle.js',
       publicPath: '/dist',
     },
