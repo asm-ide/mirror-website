@@ -9,44 +9,115 @@ const variables = require('./variables')
 const srcDir = path.resolve(__dirname, 'src')
 
 module.exports = (env, argv) => {
+  const css = [
+    'css-loader',
+    // 'autoprefixer-loader',
+  ]
+
+  const sass = [
+    ...css,
+    'sass-loader',
+  ]
+
+  const jsTest = /\.(js|jsx)$/i
+  const tsTest = /\.(ts|tsx)$/i
+
   return {
     entry: {
-      'main': './src/js/index.js'
+      main: './src/script/index.ts',
     },
     module: {
       rules: [
+
+        // eslint
         {
-          test: /\.js$/i,
-          exclude: [/node_modules/],
-          include: path.resolve(srcDir, 'js'),
-          use: 'babel-loader'
+          enforce: 'pre',
+          test: jsTest,
+          include: path.resolve(srcDir, 'script'),
+          loader: 'eslint-loader'
         },
-        // { // We're not using css; but scss.
-        //   test: /\.css$/i,
-        //   use: ['style-loader', 'css-loader']
-        // },
+
+        // ts
+        {
+          test: tsTest,
+          include: path.resolve(srcDir, 'script'),
+          loader: 'ts-loader',
+          options: {
+            configFile: 'jsconfig.json'
+          }
+        },
+
+        // js
+        {
+          test: jsTest,
+          include: path.resolve(srcDir, 'script'),
+          loader: 'babel-loader'
+        },
+
+
+        // style
+
+        // sass
         {
           test: /\.(sass|scss)$/i,
-          include: path.resolve(srcDir, 'sass'),
-          use: [
-            'style-loader',
-            'css-loader',
-            'sass-loader',
-          ]
-        }
+          include: path.resolve(srcDir, 'style'),
+          oneOf: [
+            {
+              resourceQuery: /string/,
+              use: ['css-to-string-loader', ...sass]
+            },
+            {
+              use: ['style-loader', ...sass]
+            },
+          ],
+        },
 
-        // Loaders for other file types can go here
-      ]
+        // css
+        {
+          test: /\.(css)$/i,
+          include: path.resolve(srcDir, 'style'),
+          oneOf: [
+            {
+              resourceQuery: /string/,
+              use: ['css-to-string-loader', ...css]
+            },
+            {
+              loader: ['style-loader', ...css]
+            },
+          ]
+        },
+        {
+          test: /\.(gif|png|jpe?g|svg)$/i,
+          use: [
+            'file-loader',
+            {
+              loader: 'image-webpack-loader',
+              options: {
+                disable: true
+              }
+            }
+          ]
+        },
+      ],
+
+    },
+    resolve: {
+      extensions: ['.ts', '.tsx', '.js', '.jsx'],
+      alias: {
+        _: path.resolve(srcDir, 'script'),
+        _src: srcDir,
+        _root: __dirname
+      }
     },
     plugins: [
-      new HtmlWebpackPlugin(Object.assign({ template: "./src/html/index.html", inject: "head" }, variables))
+      new HtmlWebpackPlugin(Object.assign({ template: './src/html/index.html' }, variables))
     ],
     output: {
       path: path.resolve(__dirname, 'public'),
       filename: '[name].bundle.js',
-      publicPath: '/assets',
+      publicPath: '/dist',
     },
 
-    devtool: argv.mode === 'development'? 'source-map' : 'none'
+    devtool: argv.mode === 'development' ? 'source-map' : 'none'
   }
 }

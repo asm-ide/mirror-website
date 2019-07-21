@@ -1,0 +1,41 @@
+$primary: #2979FF;
+$background: white;
+$foreground: black;
+
+
+
+// main page settings
+
+// center tile
+.center-tile {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+// drawer settings
+
+body {
+  font-family: Roboto, sans-serif;
+  transition: opacity ease-in 0.2s;
+  height: 100vh;
+  margin: 0;
+}
+
+.unresolved {
+  opacity: 0;
+}
+
+.drawer-content {
+  padding: 0px 16px 0 16px;
+}
+
+main {
+  width: 100%;
+  min-height: 300px;
+  padding: 48px 0 0 0;
+}
+
+
+@import 'drawer';
