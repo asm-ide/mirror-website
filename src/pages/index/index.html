@@ -1,0 +1,44 @@
+<!doctype html>
+<html>
+
+	<head>
+		<module href="/pages/header.html" />
+
+		<!-- SEO: If your mobile URL is different from the desktop URL, add a canonical link to the desktop page https://developers.google.com/webmasters/smartphone-sites/feature-phones -->
+		<!--
+			<link rel="canonical" href="http://www.example.com/">
+			-->
+	</head>
+
+	<body>
+		<template id="all-view">
+			<mwc-drawer hasHeader type="modal">
+				<span slot="title">Drawer Title</span>
+				<span slot="subtitle">subtitle</span>
+				<div class="drawer-content">
+					<p>Drawer content</p>
+					<mwc-icon-button icon="gesture"></mwc-icon-button>
+					<mwc-icon-button icon="gavel" id="gavel"></mwc-icon-button>
+				</div>
+
+				<div slot="appContent" id="app-content">
+					<mwc-top-app-bar>
+						<mwc-icon-button slot="navigationIcon" icon="menu"></mwc-icon-button>
+						<div slot="title">{{ title }}</div>
+						<mwc-icon-button slot="actionItems" icon="cast"></mwc-icon-button>
+						<mwc-icon-button slot="actionItems" icon="fingerprint"></mwc-icon-button>
+					</mwc-top-app-bar>
+					<main id="main-content">
+
+						<div class="center-tile">
+							<h1>ASM - the Android Studio Mobile.</h1>
+							Code, Build, and Run on your mobile device.
+						</div>
+
+					</main>
+				</div>
+			</mwc-drawer>
+		</template>
+	</body>
+
+</html>

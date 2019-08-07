@@ -1,7 +1,16 @@
 $primary: #2979FF;
+$secondary: #fc0;
+$mdc-theme-on-primary: #fff;
+$mdc-theme-on-secondary: #000;
 $background: white;
 $foreground: black;
 
+
+$mdc-theme-primary: $primary;
+$mdc-theme-secondary: $secondary;
+$mdc-theme-background: $background;
+
+// @import "material-components-web/material-components-web";
 
 
 // main page settings
@@ -36,6 +45,3 @@ main {
   min-height: 300px;
   padding: 48px 0 0 0;
 }
-
-
-@import 'drawer';

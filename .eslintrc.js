@@ -3,7 +3,6 @@ module.exports = {
         browser: true
     },
     extends: "eslint:recommended",
-    // parser: "babel-eslint",
     globals: {
         Atomics: "readonly",
         SharedArrayBuffer: "readonly"
@@ -29,5 +28,13 @@ module.exports = {
             "error",
             "never"
         ],
-    }
+        "space-before-function-paren": ["error", "never"],
+        "keyword-spacing": [
+            "error",
+            { overrides: { "if": { after: false }, "for": { after: false }, "while": { after: false } } }
+        ],
+        "comma-dangle": [
+            "off"
+        ]
+    },
 };
