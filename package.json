@@ -5,7 +5,7 @@
   "main": "index.html",
   "repository": "https://gitlab.com/asm-ide/asm-ide.gitlab.io",
   "author": "lhwdev <lhwdev6@outlook.com>",
-  "license": "MIT",
+  "license": "Apache-2.0",
   "private": true,
   "scripts": {
     "prodBuild": "webpack -p --mode production",
