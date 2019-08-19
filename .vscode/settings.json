@@ -1,0 +1,8 @@
+{
+  "eslint.enable": false,
+  "tslint.jsEnable": true,
+  "tslint.packageManager": "yarn",
+  "eslint.packageManager": "yarn",
+  "npm.packageManager": "yarn",
+  "tslint.configFile": "tslint\\.yaml"
+}
