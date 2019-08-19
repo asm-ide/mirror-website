@@ -3,8 +3,8 @@ image: node:current-alpine
 pages:
   stage: deploy
   script:
-  - npm i
-  - npm run prodBuild
+  - yarn install
+  - yarn prodBuild
   artifacts:
     paths:
     - public

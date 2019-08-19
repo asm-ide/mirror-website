@@ -1,58 +1,27 @@
----
-
 extends:
   - "tslint:recommended"
 linterOptions:
   exclude:
     - ./node_modules/**/*
+    - "*.config.js"
+    - .babelrc.js
 
-rules:
+rules: &UNIVERSAL_RULES
   max-line-length:
     options: [120]
-  space-before-function-paren: false
+  space-before-function-paren: [true, "never"]
   indent: [true, "spaces", 2]
   semicolon: [true, "never"]
   quotemark: [true, "single", "jsx-double"]
   no-consecutive-blank-lines: false
   member-access: false
-  
+  arrow-parens: false
+  array-type: false
+  no-string-literal: false
+  whitespace: [false, "check-branch"]
+  object-literal-sort-keys: false
+  no-console: false
+  no-var-keyword: true
 
-
-# env: {
-    #     browser: true
-    # },
-    # extends: "eslint:recommended",
-    # globals: {
-    #     Atomics: "readonly",
-    #     SharedArrayBuffer: "readonly"
-    # },
-    # parserOptions: {
-    #     sourceType: "module",
-    #     ecmaVersion: 2015
-    # },
-    # settings: {
-    #     "import/resolver": "webpack",
-    #     "import/parser": "babel-eslint",
-    # },
-    # rules: {
-    #     indent: [
-    #         "warn",
-    #         2
-    #     ],
-    #     quotes: [
-    #         "error",
-    #         "single"
-    #     ],
-    #     semi: [
-    #         "error",
-    #         "never"
-    #     ],
-    #     "space-before-function-paren": ["error", "never"],
-    #     "keyword-spacing": [
-    #         "error",
-    #         { overrides: { "if": { after: false }, "for": { after: false }, "while": { after: false } } }
-    #     ],
-    #     "comma-dangle": [
-    #         "off"
-    #     ]
-    # },
+jsRules:
+  <<: *UNIVERSAL_RULES

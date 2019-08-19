@@ -3,9 +3,13 @@
     "experimentalDecorators": true,
     "esModuleInterop": true,
     "target": "es5",
-    "jsx": "preserve"
+    "jsx": "preserve",
+    "allowJs": true,
+    "strictNullChecks": true,
+    "outDir": "dist",
+    "lib": ["dom", "es2017"]
   },
   "include": [
     "src/**/*"
-  ]
+  ],
 }

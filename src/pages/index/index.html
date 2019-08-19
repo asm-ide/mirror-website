@@ -11,34 +11,39 @@
 	</head>
 
 	<body>
-		<template id="all-view">
-			<mwc-drawer hasHeader type="modal">
-				<span slot="title">Drawer Title</span>
-				<span slot="subtitle">subtitle</span>
-				<div class="drawer-content">
-					<p>Drawer content</p>
-					<mwc-icon-button icon="gesture"></mwc-icon-button>
-					<mwc-icon-button icon="gavel" id="gavel"></mwc-icon-button>
+		<mwc-drawer type="modal">
+			<div slot="header" class="on-primary">Login to use full feature.</div>
+			<div class="drawer-side" class="on-background">
+				<div class="drawer-side-content on-primary">
+					Login to use full features.
 				</div>
+				<mwc-icon-button icon="gesture"></mwc-icon-button>
+				<mwc-icon-button icon="gavel"></mwc-icon-button>
+			</div>
 
-				<div slot="appContent" id="app-content">
-					<mwc-top-app-bar>
-						<mwc-icon-button slot="navigationIcon" icon="menu"></mwc-icon-button>
-						<div slot="title">{{ title }}</div>
-						<mwc-icon-button slot="actionItems" icon="cast"></mwc-icon-button>
-						<mwc-icon-button slot="actionItems" icon="fingerprint"></mwc-icon-button>
-					</mwc-top-app-bar>
-					<main id="main-content">
-
-						<div class="center-tile">
-							<h1>ASM - the Android Studio Mobile.</h1>
-							Code, Build, and Run on your mobile device.
+			<div slot="appContent" id="app-content">
+				<mwc-top-app-bar type="fixed">
+					<mwc-icon-button slot="navigationIcon" icon="menu"></mwc-icon-button>
+					<div slot="title">{{ title }}</div>
+					<mwc-icon-button slot="actionItems" icon="cast"></mwc-icon-button>
+					<mwc-icon-button slot="actionItems" icon="fingerprint"></mwc-icon-button>
+				</mwc-top-app-bar>
+				<main id="main-content" class="on-background">
+					<div class="center-tile big-bottom">
+						<h2>ASM - the Android Studio Mobile.</h2>
+						Code, Build, and Run on your mobile device.
+					</div>
+					<div class="center-tile on-primary">
+						<h2>Code with confidence</h2>
+						full-featured code analysis, suggestion, and refactoring
+					</div>
+					<div class="center-tile big on-secondary">
+							<h2>Build instantly</h2>
+							build without leaving your phone
 						</div>
-
-					</main>
-				</div>
-			</mwc-drawer>
-		</template>
+				</main>
+			</div>
+		</mwc-drawer>
 	</body>
 
 </html>

@@ -15,12 +15,12 @@ class ExternalAnchor extends LitElement {
 
 
   render() {
-    return <a href="#" onClick={this.open}></a>
+    return html`<a href="#" onClick=${this.open}></a>`
   }
 
   open() {
     const opened = window.open(this.href, Target[this.target], 'noopener')
-    opened.opener = null
+    if(opened) { opened.opener = null }
   }
 }
 

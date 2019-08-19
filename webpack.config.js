@@ -1,17 +1,23 @@
-const path = require('path')
-
-const webpack = require('webpack')
-const HtmlWebpackPlugin = require('html-webpack-plugin')
-
-const srcDir = path.resolve(__dirname, 'src')
-
-
 module.exports = (env, argv) => {
   const isDevelopment = argv.mode === 'development'
   const isProduction = argv.mode == 'production'
 
+
+  const path = require('path')
+
+  // paths
+  const srcDir = path.resolve(__dirname, 'src')
+
+  // plugins
+  const webpack = require('webpack')
+  const HtmlWebpackPlugin = require('html-webpack-plugin')
+
+  // development
   const StatsPlugin = isDevelopment && require('stats-webpack-plugin')
+
+  // production
   const MiniCssExtractPlugin = isProduction && require("mini-css-extract-plugin")
+  const UglifyJsPlugin = isProduction && require('uglifyjs-webpack-plugin')
 
   const cssLast = []
 
@@ -65,12 +71,12 @@ module.exports = (env, argv) => {
     },
 
 
-    // eslint
-    {
-      enforce: 'pre',
-      test: jsTest,
-      loader: 'eslint-loader'
-    },
+    // // eslint
+    // {
+    //   enforce: 'pre',
+    //   test: jsTest,
+    //   loader: 'eslint-loader'
+    // },
 
     // js
     {
@@ -81,7 +87,7 @@ module.exports = (env, argv) => {
     // tslint
     {
       enforce: 'pre',
-      test: jsTest,
+      test: /\.(js|jsx|ts|tsx)$/i,
       loader: 'tslint-loader',
       options: {
         configFile: 'tslint.yaml'
@@ -93,7 +99,7 @@ module.exports = (env, argv) => {
       test: tsTest,
       loader: 'ts-loader',
       options: {
-        configFile: 'jsconfig.json'
+        configFile: 'tsconfig.json'
       }
     },
 
@@ -132,41 +138,52 @@ module.exports = (env, argv) => {
   let plugins = [
     new HtmlWebpackPlugin({
       filename: 'index.html',
-      template: 'src/pages/template.html',
+      template: 'src/pages/index/index.html',
     }),
     new webpack.HotModuleReplacementPlugin(),
+    ...(isDevelopment ? [
+      new StatsPlugin(),
+    ] : []),
+    ...(isProduction ? [
+      new MiniCssExtractPlugin(),
+    ] : []),
   ]
-
-  if (isDevelopment) plugins.push(
-    // on development
-    new StatsPlugin()
-  )
-  if (isProduction) plugins.push(
-    // on production
-    new MiniCssExtractPlugin(),
-  )
 
 
   return {
-    // profile: true,
+    // input
     entry: {
       main: './src/pages/index',
     },
+    // process
     module: {
       rules,
     },
     resolve: {
       extensions: ['.ts', '.tsx', '.js', '.jsx', '.scss', 'sass', '.css'],
       modules: [srcDir, 'node_modules'],
+      alias: {
+        '#': srcDir,
+      },
     },
+
     plugins,
+
+    // output
     output: {
       path: path.resolve(__dirname, './public'),
       filename: '[name].bundle.js',
-      publicPath: './public',
+      publicPath: '/public',
     },
     externals: [],
 
+    // development
     devtool: isDevelopment ? 'source-map' : 'none',
+
+    // production
+    optimization: {
+      minimizer: isProduction ? [new UglifyJsPlugin()] : [],
+      ...(isProduction? {splitChunks: { chunks: 'all' }} : {})
+    },
   }
 }

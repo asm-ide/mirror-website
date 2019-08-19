@@ -1,47 +1,83 @@
-$primary: #2979FF;
-$secondary: #fc0;
-$mdc-theme-on-primary: #fff;
-$mdc-theme-on-secondary: #000;
+$primary: #2979ff;
+$secondary: #ffeb3b;
+$on-primary: #fff;
+$on-secondary: #000;
 $background: white;
 $foreground: black;
 
-
 $mdc-theme-primary: $primary;
 $mdc-theme-secondary: $secondary;
+$mdc-theme-on-primary: $on-primary;
+$mdc-theme-on-secondary: $on-secondary;
 $mdc-theme-background: $background;
 
-// @import "material-components-web/material-components-web";
 
+$classes-on-inverse: ".on-inverse, .on-primary";
+$classes-on-background: ".on-background, .on-secondary";
+
+@import "./common/material-dependencies.scss";
 
 // main page settings
 
-// center tile
-.center-tile {
-  width: 100%;
-  display: flex;
-  align-items: center;
-  flex-direction: column;
+:root {
+  --primary: #{$primary};
+  --secondary: #{$secondary};
+  --on-primary: #{$on-primary};
+  --on-secondary: #{$on-secondary};
+  --background: #{$background};
+  --foreground: #{$foreground};
 }
 
-// drawer settings
-
 body {
-  font-family: Roboto, sans-serif;
-  transition: opacity ease-in 0.2s;
-  height: 100vh;
   margin: 0;
+  font-family: Roboto, sans-serif;
+  min-height: 100vh;
+  transition: opacity ease-in 0.2s, transform 0.2s cubic-bezier(0.4, 0, 0.2, 1) 50ms;
 }
 
 .unresolved {
   opacity: 0;
 }
 
-.drawer-content {
-  padding: 0px 16px 0 16px;
+.drawer-side {
+  width: $mdc-drawer-width + 1px;
+  padding: 0px 0px 0 0px !important;
+}
+
+.drawer-side-content {
+  padding: 12px 16px;
 }
 
 main {
   width: 100%;
   min-height: 300px;
-  padding: 48px 0 0 0;
+  padding: 10vh 0 0 0;
+}
+
+::selection {
+  background: rgba($primary, 0.25);
+}
+
+#{$classes-on-background} {
+  --on-background: true;
+  --on-background-mwc-icon-button-ripple-color: black;
+}
+
+#{$classes-on-inverse} {
+  --on-background: false;
+  --on-background-mwc-icon-button-ripple-color: white;
+}
+
+.on-primary {
+  background: $primary;
+  color: $on-primary;
+}
+
+.on-secondary {
+  background: $secondary;
+  color: $on-secondary;
+}
+
+mwc-icon-button {
+  --mdc-theme-on-primary: var(--on-background-mwc-icon-button-ripple-color);
 }
