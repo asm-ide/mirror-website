@@ -173,12 +173,17 @@ module.exports = (env, argv) => {
     output: {
       path: path.resolve(__dirname, './public'),
       filename: '[name].bundle.js',
-      publicPath: isDevelopment ? '/public' : '',
+      publicPath: '/',
     },
     externals: [],
 
     // development
     devtool: isDevelopment ? 'source-map' : 'none',
+
+    devServer: {
+      contentBase: path.join(__dirname, 'public'),
+      hot: true,
+    },
 
     // production
     optimization: {
@@ -187,8 +192,6 @@ module.exports = (env, argv) => {
           parallel: true,
           terserOptions: {
               ecma: 6,
-              mangle: true,
-              unused: true,
           }
       })] : [],
       ...(isProduction? {splitChunks: { chunks: 'all' }} : {})

@@ -2,12 +2,12 @@
   "compilerOptions": {
     "experimentalDecorators": true,
     "esModuleInterop": true,
-    "target": "es5",
+    "target": "es6",
     "jsx": "preserve",
     "allowJs": true,
     "strictNullChecks": true,
     "outDir": "dist",
-    "lib": ["dom", "es2017"]
+    "lib": ["dom", "es6"]
   },
   "include": [
     "src/**/*"
