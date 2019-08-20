@@ -180,6 +180,7 @@ module.exports = (env, argv) => {
     // development
     devtool: isDevelopment ? 'source-map' : 'none',
 
+    // devServer
     devServer: {
       contentBase: path.join(__dirname, 'public'),
       hot: true,
