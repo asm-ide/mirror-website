@@ -173,7 +173,7 @@ module.exports = (env, argv) => {
     output: {
       path: path.resolve(__dirname, './public'),
       filename: '[name].bundle.js',
-      publicPath: '/public',
+      publicPath: isDevelopment ? '/public' : '',
     },
     externals: [],
 
