@@ -17,7 +17,7 @@ module.exports = (env, argv) => {
 
   // production
   const MiniCssExtractPlugin = isProduction && require("mini-css-extract-plugin")
-  const UglifyJsPlugin = isProduction && require('uglifyjs-webpack-plugin')
+  const TerserPlugin = isProduction && require('terser-webpack-plugin')
 
   const cssLast = []
 
@@ -182,7 +182,15 @@ module.exports = (env, argv) => {
 
     // production
     optimization: {
-      minimizer: isProduction ? [new UglifyJsPlugin()] : [],
+      minimizer: isProduction ? [new TerserPlugin({
+          cache: true,
+          parallel: true,
+          terserOptions: {
+              ecma: 6,
+              mangle: true,
+              unused: true,
+          }
+      })] : [],
       ...(isProduction? {splitChunks: { chunks: 'all' }} : {})
     },
   }
